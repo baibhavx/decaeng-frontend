@@ -8,7 +8,7 @@ export default function Triage() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/search", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/search`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query }),
@@ -43,7 +43,7 @@ export default function Triage() {
         <>
           <h2 className="text-xl font-bold mt-6">🔍 Related Incidents</h2>
           <ul>
-            {results.map((incident: any) => (
+            {results.map((incident: {id: string; title: string; description: string; similarity: number}) => (
               <li key={incident.id} className="border p-4 my-2 rounded">
                 <strong>{incident.title}</strong>
                 <p>{incident.description}</p>

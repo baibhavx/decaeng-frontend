@@ -6,7 +6,7 @@ export default function Home() {
   const [incidents, setIncidents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/incidents")
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/incidents`)
       .then((res) => res.json())
       .then((data) => setIncidents(data))
       .catch((err) => console.error("Error fetching incidents:", err));
@@ -24,7 +24,7 @@ export default function Home() {
       </Link>
 
       <ul className="mt-6">
-        {incidents.map((incident: any) => (
+        {incidents.map((incident: {id: string; title: string; description: string}) => (
           <li key={incident.id} className="border p-4 my-2 rounded">
             <strong>{incident.title}</strong>
             <p>{incident.description}</p>

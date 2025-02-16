@@ -9,7 +9,7 @@ export default function NewIncident() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/incidents", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/incidents`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description }),
