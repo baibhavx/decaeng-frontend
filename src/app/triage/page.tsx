@@ -34,7 +34,10 @@ export default function Triage() {
           onChange={(e) => setQuery(e.target.value)}
           required
         />
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
+        <button
+          type="submit"
+          className="bg-green-500 text-white px-4 py-2 rounded"
+        >
           Search & Get AI Insights
         </button>
       </form>
@@ -43,13 +46,22 @@ export default function Triage() {
         <>
           <h2 className="text-xl font-bold mt-6">🔍 Related Incidents</h2>
           <ul>
-            {results.map((incident: {id: string; title: string; description: string; similarity: number}) => (
-              <li key={incident.id} className="border p-4 my-2 rounded">
-                <strong>{incident.title}</strong>
-                <p>{incident.description}</p>
-                <p className="text-sm text-gray-600">Similarity: {incident.similarity.toFixed(2)}</p>
-              </li>
-            ))}
+            {results.map(
+              (incident: {
+                id: string;
+                title: string;
+                description: string;
+                similarity: number;
+              }) => (
+                <li key={incident.id} className="border p-4 my-2 rounded">
+                  <strong>{incident.title}</strong>
+                  <p>{incident.description}</p>
+                  <p className="text-sm text-gray-600">
+                    Similarity: {(1 - incident.similarity).toFixed(2)}
+                  </p>
+                </li>
+              )
+            )}
           </ul>
         </>
       )}
@@ -63,4 +75,3 @@ export default function Triage() {
     </main>
   );
 }
-
