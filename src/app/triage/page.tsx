@@ -55,7 +55,7 @@ export default function Triage() {
       )}
 
       {resolution && (
-        <div className="mt-6 p-4 bg-gray-100 rounded">
+        <div className="mt-6 p-4 bg-gray-800 text-white rounded">
           <h2 className="text-xl font-bold">💡 Suggested Resolution</h2>
           <p>{resolution}</p>
         </div>
